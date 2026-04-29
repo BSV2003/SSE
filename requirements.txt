@@ -1,0 +1,6 @@
+flask
+bcrypt
+pyotp
+qrcode
+pillow
+requests
