@@ -66,7 +66,7 @@ secure-login-lab/
 
 ### 1. Clone Repository
 ```bash
-git clone <your-repo-link>
+git clone <repo-link>
 cd secure-login-lab
 ````
 
