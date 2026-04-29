@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}DB View{% endblock %}
+{% block content %}
+<div class="card card-wide">
+  <div class="card-header">
+    <div class="card-icon">🗄️</div>
+    <h1>Database Contents</h1>
+    <p class="card-sub">Passwords are stored as bcrypt hashes — never plaintext</p>
+  </div>
+  <div class="db-table-wrap">
+    <table class="db-table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Password Hash (bcrypt)</th>
+          <th>Failed Attempts</th>
+          <th>Locked Until</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for u in users %}
+        <tr>
+          <td class="mono">{{ u['username'] }}</td>
+          <td class="mono hash">{{ u['password'].decode() if u['password'] else '—' }}</td>
+          <td class="center">{{ u['failed_attempts'] }}</td>
+          <td class="center">
+            {% if u['locked_until'] > 0 %}
+              <span class="badge badge-red">LOCKED</span>
+            {% else %}
+              <span class="badge badge-green">OK</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4" class="center">No users registered yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="hint small" style="margin-top:1rem;">
+    ⚠️ This route is for lab demo only. Remove <code>/admin/db</code> before production deployment.
+  </p>
+</div>
+{% endblock %}

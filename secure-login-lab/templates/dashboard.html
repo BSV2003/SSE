@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <div class="card-icon">✅</div>
+    <h1>Welcome, {{ username }}!</h1>
+    <p class="card-sub">You passed password auth + TOTP 2FA successfully.</p>
+  </div>
+  <div class="security-badges">
+    <div class="badge badge-green">🔒 bcrypt hashed password</div>
+    <div class="badge badge-green">📱 TOTP 2FA verified</div>
+    <div class="badge badge-green">🛡️ Rate limiting active</div>
+    <div class="badge badge-green">🔁 Replay attacks blocked</div>
+  </div>
+  <div class="card-actions">
+    <a href="/admin/db" class="btn btn-outline">View DB (dev only)</a>
+    <a href="/logout" class="btn btn-primary">Logout</a>
+  </div>
+</div>
+{% endblock %}

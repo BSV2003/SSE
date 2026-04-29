@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <div class="card-icon">👤</div>
+    <h1>Create Account</h1>
+    <p class="card-sub">Password is hashed with bcrypt before storage</p>
+  </div>
+  <form method="POST" action="/register" class="form">
+    <div class="field">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text"
+             placeholder="choose-a-username" autocomplete="username" required>
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password"
+             placeholder="••••••••" autocomplete="new-password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Account →</button>
+  </form>
+  <p class="card-footer">Already registered? <a href="/">Login here</a></p>
+</div>
+{% endblock %}
